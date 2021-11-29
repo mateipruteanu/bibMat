@@ -13,6 +13,7 @@ int mat1[11][11], linii1, coloane1, mat2[11][11], linii2, coloane2;
 int rez[22][22], linii3, coloane3;
 
 void afisareRezultat();
+void determinant();
 void scadere();
 void adunare();
 void fileOrKey();
@@ -24,9 +25,38 @@ int main()
 {
 
     intro();
-    //afisareMat(mat1, mat2, linii1, coloane1, linii2, coloane2); test123
     return 0;
 }
+
+void determinant() /// deocamdata doar pt matrici de rang 2 sau 3
+{
+    int det = -9999;
+    citireMatrice(mat1, mat2);
+    if(linii1 != coloane1)
+    {
+        cout<<"Numarul de linii nu este egal cu cel de coloane!";
+        exit(1);
+    }
+    if(linii1 > 3 || coloane1 > 3)
+    {
+        cout<<"Matricea are rang mai mare decat 3";
+        exit(1);
+    }
+
+    switch (linii1) {
+        case 2:
+            det = (mat1[1][1] * mat1[2][2]) - (mat1[1][2] * mat1[2][1]);
+            break;
+        case 3:
+            det = (mat1[1][1] * mat1[2][2] * mat1[3][3]) + (mat1[1][3] * mat1[2][1] * mat1[3][2]) + (mat1[1][2] * mat1[2][3] * mat1[3][1]) - (mat1[1][3] * mat1[2][2] * mat1[3][1]) - (mat1[2][1] * mat1[1][2] * mat1[3][3]) - (mat1[3][2] * mat1[2][3] * mat1[1][1]);
+            break;
+        default:
+            cout<<"Matricea nu are nici rang 2, nici 3";
+    }
+    cout<<det;
+
+}
+
 
 void scadere()
 {
@@ -138,6 +168,8 @@ void intro()
         adunare();
     else if(strcmp(operatie, "-") == 0 || strcmp(operatie, "minus") == 0 || strcmp(operatie, "scadere") == 0)
         scadere();
+    else if(strcmp(operatie, "det") == 0 || strcmp(operatie, "||") == 0 || strcmp(operatie, "determinant") == 0)
+        determinant();
 //    else if(strcmp(operatie, "*") == 0 || strcmp(operatie, "ori") == 0 || strcmp(operatie, "inmultire") == 0)
 //        inmultire();
 //    else if(strcmp(operatie, "^") == 0 || strcmp(operatie, "putere") == 0 || strcmp(operatie, "ridicare la putere") == 0)
