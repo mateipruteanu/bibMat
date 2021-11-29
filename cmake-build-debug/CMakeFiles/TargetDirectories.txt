@@ -1,0 +1,3 @@
+/Users/mateipruteanu/Documents/Clion Projects/bibMat/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mateipruteanu/Documents/Clion Projects/bibMat/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mateipruteanu/Documents/Clion Projects/bibMat/cmake-build-debug/CMakeFiles/bibMat.dir
