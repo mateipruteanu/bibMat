@@ -24,7 +24,7 @@ int main()
 {
 
     intro();
-    //afisareMat(mat1, mat2, linii1, coloane1, linii2, coloane2);
+    //afisareMat(mat1, mat2, linii1, coloane1, linii2, coloane2); test123
     return 0;
 }
 

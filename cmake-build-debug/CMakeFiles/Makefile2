@@ -54,10 +54,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/mateipruteanu/Documents/Clion Projects/bibMat"
+CMAKE_SOURCE_DIR = /Users/mateipruteanu/Documents/GitHub/bibMat
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/mateipruteanu/Documents/Clion Projects/bibMat/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/mateipruteanu/Documents/GitHub/bibMat/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/bibMat.dir/clean
 CMakeFiles/bibMat.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bibMat.dir/build.make CMakeFiles/bibMat.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bibMat.dir/build.make CMakeFiles/bibMat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/mateipruteanu/Documents/Clion Projects/bibMat/cmake-build-debug/CMakeFiles" --progress-num=1,2 "Built target bibMat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/mateipruteanu/Documents/GitHub/bibMat/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target bibMat"
 .PHONY : CMakeFiles/bibMat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bibMat.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/mateipruteanu/Documents/Clion Projects/bibMat/cmake-build-debug/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mateipruteanu/Documents/GitHub/bibMat/cmake-build-debug/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bibMat.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/mateipruteanu/Documents/Clion Projects/bibMat/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mateipruteanu/Documents/GitHub/bibMat/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/bibMat.dir/rule
 
 # Convenience name for target.
