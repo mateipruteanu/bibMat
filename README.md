@@ -1,11 +1,6 @@
 # bibMat
  O biblioteca C / C++ pentru operatii cu matrice
 
-Supported operations: 
- - reading from the keyboard or from a file
- - addition
- - subtraction
-
 Operatii suportate:
  - citirea de la tastatura sau dintr-un fisier
  - adunarea
