@@ -19,6 +19,13 @@ Operations that will be supported in the future:
  - obtinerea inversei unei matrice
  - obtinerea determinantului unei matrice
  - etc...
+ - suma elementelor dintr-un vector
+ - produsul elementelor dintr-un vector
+ - shiftare stanga/dreapta a unui vector
+ - sortare crescatoare/descrescatoare a unui vector
+ - inmultire vector cu un scalar
+
+
 
 
 Un proiect realizat de Gheorghiu Maria si Pruteanu Matei
