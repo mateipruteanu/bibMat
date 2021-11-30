@@ -45,14 +45,13 @@ void adunareElV();
 void inmultireElV();
 void sortareCrescV();
 void sortareDescrescV();
-//void shiftareStgV();
-//void shiftareDrV();
+void shiftareStgV();
+void shiftareDrV();
 
 int main()
 {
 
     intro();
-    //afisareMat(mat1, mat2, linii1, coloane1, linii2, coloane2); test123
     return 0;
 }
 
@@ -272,15 +271,15 @@ void introV()
     adunareElV();
     else if(strcmp(operatie, "*") == 0 || strcmp(operatie, "ori") == 0 || strcmp(operatie, "inmultire") == 0)
     inmultireElV();
-    /*else if(strcmp(operatie, "shift") == 0 || strcmp(operatie, "shiftare") == 0)
+    else if(strcmp(operatie, "shift") == 0 || strcmp(operatie, "shiftare") == 0)
     {
-        cout<<"La stanga sau la dreapta?";
+        cout<<"La stanga sau la dreapta? ";
         cin.getline(stgSauDr, 10);
         if(strcmp(stgSauDr, "stanga") == 0 || strcmp(stgSauDr, "stg") == 0 || strcmp(stgSauDr, "s") == 0)
             shiftareStgV();
         else if(strcmp(stgSauDr, "dreapta") == 0 || strcmp(stgSauDr, "dr") == 0 || strcmp(stgSauDr, "d") == 0)
             shiftareDrV();
-    }*/
+    }
     else if(strcmp(operatie, "sortare") == 0)
     {
         cout<<"Crescator sau descrescator? ";
@@ -301,10 +300,28 @@ void introV()
 
 void citireVector(int a[50])
 {
-    cout<<"Introduceti numarul de elemente al vectorului: ";
-    cin>>n;
-    for(int i=0; i<n; i++)
-        cin>>a[i];
+    fileOrKey();
+
+    if(!fisier) {
+        cout<<"Introduceti numarul de elemente al vectorului: ";
+        cin>>n;
+        for(int i=0; i<n; i++)
+            cin>>a[i];
+    }
+    else {
+        FILE *f = fopen(numeFisier, "r");
+        if(f == NULL) {
+            cout<<"Fisierul nu a fost gasit!"<<endl;
+            exit(1);
+        }
+        cout<<"Introduceti numarul de elemente al vectorului: ";
+        cin>>n;
+        for(int i = 0; i < n; i++)
+            fscanf(f, "%d", &a[i]);
+    }
+
+
+
 }
 
 void afisareVector(int a[50])
@@ -374,5 +391,29 @@ void inmultirescalarV()
     {
         vec[i] = vec [i] * scalar;
     }
+    afisareVector(vec);
+}
+
+void shiftareStgV()
+{
+    citireVector(vec);
+
+    int auxV = vec[0];
+    for(int i = 0; i < n - 1; i++)
+        vec[i] = vec[i + 1];
+    vec[n - 1] = auxV;
+
+    afisareVector(vec);
+}
+
+void shiftareDrV()
+{
+    citireVector(vec);
+
+    int auxV = vec[n-1];
+    for(int i = n - 1; i > 0; i--)
+        vec[i] = vec[i-1];
+    vec[0] = auxV;
+
     afisareVector(vec);
 }
