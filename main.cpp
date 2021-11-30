@@ -5,6 +5,7 @@
 using namespace std;
 
 //variabile matrice
+bool rPutere = false;
 bool douaMatrice = false;
 bool fisier = false;
 char operatie[21];
@@ -32,6 +33,8 @@ void afisareRezultat();
 void determinant();
 void scadere();
 void adunare();
+void inmultireM(int a[11][11], int b[11][11]);
+void putere();
 void fileOrKey();
 void citireMatrice(int a[11][11], int b[11][11]);
 void afisareMat(int a[11][11], int b[11][11]);
@@ -65,6 +68,9 @@ void intro()
         introM();
 }
 
+
+
+///functii pentru matrice
 void determinant() /// deocamdata doar pt matrici de rang 2 sau 3
 {
     int det = -9999;
@@ -126,6 +132,58 @@ void adunare()
         for(int j = 1; j <= coloane1; j++)
             rez[i][j] = mat1[i][j] + mat2[i][j];
     afisareRezultat();
+}
+
+void inmultireM(int a[11][11], int b[11][11])
+{
+
+    if(!rPutere) {
+        douaMatrice = true;
+        citireMatrice(a, b);
+    }
+
+
+    for(int i = 1; i <= linii1; i++)
+        for(int j = 1; j <= coloane2; j++)
+            for(int k = 1; k <= coloane1; k++)
+                rez[i][j] += a[i][k] * b[k][j];
+
+
+    if(!rPutere)
+    {
+        for(int i = 1; i <= linii1; i++)
+        {
+            for(int j = 1; j <= coloane2; j++)
+                cout<<rez[i][j]<<" ";
+            cout<<endl;
+        }
+    }
+
+
+
+}
+
+void putere()   /// deocamdata se poate ridica doar la puterea a 2a
+{
+    int p = 0;
+    rPutere = true;
+    citireMatrice(mat1, mat2);
+    cout<<"Introduceti puterea la care trebuie ridicata matricea: ";
+    cin>>p;
+
+
+    linii2 = linii1, coloane2 = coloane1;
+
+
+    for(int i = 1; i < p; i++)
+        inmultireM(mat1, mat1);
+
+    for(int i = 1; i <= linii1; i++)
+    {
+        for(int j = 1; j <= coloane2; j++)
+            cout<<rez[i][j]<<" ";
+        cout<<endl;
+    }
 }
 
 void fileOrKey()    /// verificare daca sa citeasca dintr-un fisier sau de la tastatura
@@ -206,10 +264,10 @@ void introM()
         scadere();
     else if(strcmp(operatie, "det") == 0 || strcmp(operatie, "||") == 0 || strcmp(operatie, "determinant") == 0)
         determinant();
-//    else if(strcmp(operatie, "*") == 0 || strcmp(operatie, "ori") == 0 || strcmp(operatie, "inmultire") == 0)
-//        inmultire();
-//    else if(strcmp(operatie, "^") == 0 || strcmp(operatie, "putere") == 0 || strcmp(operatie, "ridicare la putere") == 0)
-//        putere();
+    else if(strcmp(operatie, "*") == 0 || strcmp(operatie, "ori") == 0 || strcmp(operatie, "inmultire") == 0)
+        inmultireM(mat1, mat2);
+    else if(strcmp(operatie, "^") == 0 || strcmp(operatie, "putere") == 0 || strcmp(operatie, "ridicare la putere") == 0)
+        putere();
     else if(strcmp(operatie, "citire1") == 0 || strcmp(operatie, "c1") == 0) /// pt citirea si afisarea unei singure matrice
     {
         citireMatrice(mat1, mat2);
@@ -263,6 +321,9 @@ void afisareRezultat()
     }
 }
 
+
+
+/// functii pt vectori
 void introV()
 {
     cout<<"Introduceti operatia dorita: ";
