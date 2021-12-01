@@ -38,6 +38,7 @@ void putere();
 void fileOrKey();
 void citireMatrice(int a[11][11], int b[11][11]);
 void afisareMat(int a[11][11], int b[11][11]);
+void transpusa();
 
 //operatii cu vectori
 void introV();
@@ -279,6 +280,10 @@ void introM()
         citireMatrice(mat1, mat2);
         afisareMat(mat1, mat2);
     }
+    else if(strcmp(operatie, "transpusa") == 0 || strcmp(operatie, "t") == 0)
+    {
+        transpusa();
+    }
 }
 
 void afisareMat(int a[11][11], int b[11][11]) /// afiseaza matricele introduse
@@ -321,7 +326,20 @@ void afisareRezultat()
     }
 }
 
-
+void transpusa()
+{
+    citireMatrice(mat1, mat2);
+    linii3 = linii1;
+    coloane3 = coloane1;
+    for(int i=1; i<=linii1 ; i++)
+    {
+        for(int j=1; j<=coloane1 ;j++)
+        {
+          rez[j][i] = mat1[i][j];
+        }
+    }
+    afisareRezultat();
+}
 
 /// functii pt vectori
 void introV()
