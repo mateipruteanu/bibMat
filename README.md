@@ -12,6 +12,7 @@ Operatii suportate:
   - inmultirea a doua matrice
   - ridicare la putere a unei matrici
   - obtinerea determinantului unei matrici
+  - obtinerea transpusei unei matrice
 
 - Cu vectori:
   - suma elementelor dintr-un vector
@@ -22,7 +23,6 @@ Operatii suportate:
 
 Operatii ce vor fi implementate in viitor:
  - scrierea intr-un fisier a rezultatului
- - obtinerea transpusei unei matrice
  - obtinerea inversei unei matrice
  - etc...
 
