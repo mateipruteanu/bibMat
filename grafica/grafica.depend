@@ -5,3 +5,10 @@
 	<winbgim.h>
 	<math.h>
 
+1639233281 source:c:\users\matei\documents\github\bibmat\grafica\main.cpp
+	<iostream>
+	<graphics.h>
+	<winbgim.h>
+	<math.h>
+	<fstream>
+
