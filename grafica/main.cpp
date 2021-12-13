@@ -2,14 +2,19 @@
 #include <graphics.h>
 #include <winbgim.h>
 #include <math.h>
+#include <cstring>
+#include <fstream>
 #define MAX 90
 
 using namespace std;
 
+ifstream fin("matrice.txt");
+
 char title[] = "bibMat - O biblioteca pentru efectuarea operatiilor cu matrice si vectori";
 int inaltimeEcran=getmaxheight(), latimeEcran=getmaxwidth();
 
-struct punct {
+struct punct
+{
     int x, y;
 };
 
@@ -19,23 +24,29 @@ struct buton
     int marime;
     int x,y;
     int x1,y1,x2,y2;
-} butonMatrice, butonVectori, adunareM, scadereM, inmultireM, putereM, detM, transM, sumaV, produsV, inmultireSV, shiftV, sortV, inapoi;
+} butonMatrice, butonVectori, adunareM, scadereM, inmultireM, putereM, detM, transM, sumaV, produsV, inmultireSV, shiftV, sortV, inapoi, butonFisier;
 
 
 void initButon(buton &b, char text[], int xx,int yy,int m);
 void showButton(buton b);
+void showButton(buton bb, int r, int g, int b); /// afisare buton cu o culoare anume
 bool isInside(int xx, int yy, int x1, int y1, int x2, int y2);
 void showMainText(char text[]);
 void showSecondaryText(char text[]);
 
+void resetMat(int m[4][4]);
 void pagina1();
 void paginaMatrice();
 void paginaVectori();
 void init();
 
+
+void citireFisierMatrice();
+void citireEcranMatrice();
 void afisareMatrice();
 void paginaAdunareMat();
 void paginaScadereMat();
+void paginaInmultireMat();
 
 void afisareV();
 void paginaAdunareElV();
@@ -46,6 +57,7 @@ int x,y;
 
 /// variabile Matrice
 int mat1[4][4], mat2[4][4], mat3[4][4];
+bool citireFisier = false;
 
 /// variabile Vectori
 int n;
@@ -57,10 +69,10 @@ char numar[10];
 
 void citireVector(int a[50])
 {
-        cout<<"Introduceti numarul de elemente al vectorului: ";
-        cin>>n;
-        for(int i=0; i<n; i++)
-            cin>>a[i];
+    cout<<"Introduceti numarul de elemente al vectorului: ";
+    cin>>n;
+    for(int i=0; i<n; i++)
+        cin>>a[i];
 }
 
 void afisareVector(int a[50])
@@ -77,8 +89,8 @@ void afisareVector(int a[50])
 
 int main()
 {
-    citireVector(vec);
-    afisareVector(vec);
+    //citireVector(vec);
+    //afisareVector(vec);
     init();
     pagina1();
 
@@ -98,6 +110,7 @@ void init()
     initButon(putereM, "Ridicarea la putere", getmaxx()/2, 5*getmaxy()/9, 7);
     initButon(detM, "Obtinerea determinantului", getmaxx()/2, 6*getmaxy()/9, 7);
     initButon(transM, "Obtinerea transpusei", getmaxx()/2, 7*getmaxy()/9, 7);
+    initButon(butonFisier, "Fisier", getmaxx()/2, 8*getmaxy()/9, 7);
 
     initButon(sumaV, "Suma elementelor", getmaxx()/2, 2*getmaxy()/9, 7);
     initButon(produsV, "Produsul elementelor", getmaxx()/2, 3*getmaxy()/9, 7);
@@ -128,6 +141,16 @@ void showButton(buton b)
     setcolor(BLACK);
     outtextxy((b.x1 + b.x2) / 2, (b.y1 + b.y2) / 2, b.msj);
 }
+
+void showButton(buton bb, int r, int g, int b)
+{
+    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, bb.marime);
+    settextjustify(CENTER_TEXT, CENTER_TEXT);
+    setbkcolor(COLOR(r, g, b));
+    setcolor(BLACK);
+    outtextxy((bb.x1 + bb.x2) / 2, (bb.y1 + bb.y2) / 2, bb.msj);
+}
+
 
 bool isInside(int xx, int yy, int x1, int y1, int x2, int y2)
 {
@@ -224,6 +247,7 @@ void paginaVectori()
         {
             ok=true;
         }
+
     }
 }
 
@@ -237,9 +261,10 @@ void paginaMatrice()
     showButton(scadereM);
     showButton(inmultireM);
     showButton(inapoi);
+    showButton(butonFisier, 255, 0, 0);
     int ok=false;
     int x,y;
-     while (ok == false)
+    while (ok == false)
     {
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
@@ -249,15 +274,18 @@ void paginaMatrice()
         if(isInside(x, y, adunareM.x1-1.5, adunareM.y1-12, adunareM.x2, adunareM.y2-12)==true) /// daca am apasat pe butonul de adunare
         {
             paginaAdunareMat();
+            clearviewport();
             ok=true;
         }
         if(isInside(x, y, scadereM.x1-1.5, scadereM.y1-12, scadereM.x2, scadereM.y2-12)==true) /// daca am apasat pe butonul de scadere
         {
             paginaScadereMat();
+            clearviewport();
             ok=true;
         }
         if(isInside(x, y, inmultireM.x1-1.5, inmultireM.y1-12, inmultireM.x2, inmultireM.y2-12)==true) /// daca am apasat pe butonul de inmultire
         {
+            paginaInmultireMat();
             ok=true;
         }
         if(isInside(x, y, putereM.x1-1.5, putereM.y1-12, putereM.x2, putereM.y2-12)==true)
@@ -272,12 +300,95 @@ void paginaMatrice()
         {
             ok=true;
         }
+        if(isInside(x, y, butonFisier.x1-1.5, butonFisier.y1-12, butonFisier.x2, butonFisier.y2-12)==true)
+        {
+            if(citireFisier == false)
+            {
+                citireFisier = true;
+                showButton(butonFisier, 0, 255, 0);
+            }
+            else
+            {
+                citireFisier = false;
+                showButton(butonFisier, 255, 0, 0);
+            }
+            //ok=true;
+        }
     }
 
 }
 
 
+
 ///OPERATII MATRICE
+
+void citireFisierMatrice()
+{
+    for(int i = 0; i < 3; i++)
+        for(int j = 0; j < 3; j++)
+            fin>>mat1[i][j];
+    for(int i = 0; i < 3; i++)
+        for(int j = 0; j < 3; j++)
+            fin>>mat2[i][j];
+}
+
+void citireEcranMatrice()
+{
+    char c, cuv[] = "";
+    int k = 0;
+    int yEcran = 300;
+    setbkcolor(COLOR(255, 255, 255));
+    for(int i = 0; i < 3; i++)
+        for(int j = 0; j < 3; j++)
+        {
+            outtextxy(50*(k++) + 300, yEcran, "      ");
+        }
+    k = 0;
+    outtextxy(50 + 300, yEcran - 50, "Prima matrice:");
+    for(int i = 0; i < 3; i++)
+        for(int j = 0; j < 3; j++)
+        {
+            c = (char)getch();
+            mat1[i][j] = (int)(c - '0');
+            cuv[0] = c;
+            cuv[1] = NULL;
+            outtextxy(50*(k++) + 300, yEcran, cuv);
+        }
+    k = 0;
+    outtextxy(50 + 300, yEcran - 50, "A doua matrice:");
+
+    k = 0;
+    for(int i = 0; i < 3; i++)
+        for(int j = 0; j < 3; j++)
+        {
+            outtextxy(50*(k++) + 300, yEcran, "      ");
+        }
+    k = 0;
+    for(int i = 0; i < 3; i++)
+        for(int j = 0; j < 3; j++)
+        {
+            c = (char)getch();
+            mat2[i][j] = (int)(c - '0');
+            cuv[0] = c;
+            cuv[1] = NULL;
+            outtextxy(50*(k++) + 300, yEcran, cuv);
+        }
+
+    outtextxy(50 + 300, yEcran - 50, "                                ");
+    k = 0;
+    for(int i = 0; i < 3; i++)
+        for(int j = 0; j < 3; j++)
+        {
+            outtextxy(50*(k++) + 300, yEcran, "      ");
+        }
+}
+
+void resetMat(int m[4][4])
+{
+    for(int i = 0; i < 3; i++)
+        for(int j = 0; j < 3; j++)
+            mat3[i][j] = 0;
+}
 
 void afisareMatrice(int mat[4][4], int x1, int y1, int ii, int jj)
 {
@@ -292,7 +403,7 @@ void afisareMatrice(int mat[4][4], int x1, int y1, int ii, int jj)
                 setcolor(WHITE);
                 setbkcolor(COLOR(244, 158, 76));
                 sprintf(str, "%d", mat[i][j]);
-                outtextxy(i*80 + x1*150, j*80 + y1*150, str);
+                outtextxy(j*80 + x1*150, i*80 + y1*150, str);
             }
             else
             {
@@ -300,7 +411,7 @@ void afisareMatrice(int mat[4][4], int x1, int y1, int ii, int jj)
                 setcolor(BLACK);
                 setbkcolor(COLOR(255, 255, 255));
                 sprintf(str, "%d", mat[i][j]);
-                outtextxy(i*80 + x1*150, j*80 + y1*150, str);
+                outtextxy(j*80 + x1*150, i*80 + y1*150, str);
             }
         }
 }
@@ -312,28 +423,48 @@ void paginaAdunareMat()
     cleardevice();
     showButton(inapoi);
     showMainText("Adunare");
+
+
+    if(citireFisier)
+        citireFisierMatrice();
+    else
+        citireEcranMatrice();
+
+
+
+    resetMat(mat3);
+
+    outtextxy(140, 650, "Matricea 1");
+    outtextxy(420, 650, "Matricea 2");
+    outtextxy(870, 650, "Rezultat");
+    outtextxy(360, 500, "+");
+    outtextxy(750, 500, "=");
+
+
     for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
         {
-            for(int j = 0; j < 3; j++)
-            {
-                mat3[i][j] = mat1[i][j] + mat2[i][j];
+            mat3[i][j] = mat1[i][j] + mat2[i][j];
 
-                afisareMatrice(mat3, 5, 3, i, j);
-                afisareMatrice(mat1, 1, 2, i, j);
-                afisareMatrice(mat2, 1, 4, i, j);
+            afisareMatrice(mat3, 6, 3, i, j);
+            afisareMatrice(mat1, 1, 3, i, j);
+            afisareMatrice(mat2, 3, 3, i, j);
 
-                delay(300);
-            }
+            delay(300);
         }
+    }
 
-  while (ok == false)
+    while (ok == false)
     {
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
+            clearviewport();
             paginaMatrice();
         }
     }
+    clearviewport();
 }
 
 void paginaScadereMat()
@@ -344,21 +475,34 @@ void paginaScadereMat()
     showButton(inapoi);
     showMainText("Scadere");
 
-        for(int i = 0; i < 3; i++)
+    if(citireFisier)
+        citireFisierMatrice();
+    else
+        citireEcranMatrice();
+
+    resetMat(mat3);
+
+    outtextxy(140, 650, "Matricea 1");
+    outtextxy(420, 650, "Matricea 2");
+    outtextxy(870, 650, "Rezultat");
+    outtextxy(360, 500, "-");
+    outtextxy(750, 500, "=");
+
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = 0; j < 3; j++)
         {
-            for(int j = 0; j < 3; j++)
-            {
-                mat3[i][j] = mat1[i][j] - mat2[i][j];
+            mat3[i][j] = mat1[i][j] - mat2[i][j];
 
-                afisareMatrice(mat3, 5, 3, i, j);
-                afisareMatrice(mat1, 1, 2, i, j);
-                afisareMatrice(mat2, 1, 4, i, j);
+            afisareMatrice(mat3, 6, 3, i, j);
+            afisareMatrice(mat1, 1, 3, i, j);
+            afisareMatrice(mat2, 3, 3, i, j);
 
-                delay(300);
-            }
+            delay(300);
         }
+    }
 
-     while (ok == false)
+    while (ok == false)
     {
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
@@ -368,8 +512,59 @@ void paginaScadereMat()
     }
 }
 
+void paginaInmultireMat()
+{
+    cleardevice();
+    setbkcolor(WHITE);
+    cleardevice();
+    showButton(inapoi);
+    showMainText("Inmultire");
+
+    if(citireFisier)
+        citireFisierMatrice();
+    else
+        citireEcranMatrice();
+
+    resetMat(mat3);
+
+    outtextxy(140, 650, "Matricea 1");
+    outtextxy(420, 650, "Matricea 2");
+    outtextxy(870, 650, "Rezultat");
+    outtextxy(360, 500, "*");
+    outtextxy(750, 500, "=");
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            mat3[i][j] = 0;
+            for (int k = 0; k < 3; k++)
+                mat3[i][j] += mat1[i][k] * mat2[k][j];
+
+            afisareMatrice(mat3, 6, 3, i, j);
+            afisareMatrice(mat1, 1, 3, i, j);
+            afisareMatrice(mat2, 3, 3, i, j);
+
+            delay(300);
+        }
+    }
+
+
+
+    while (ok == false)
+    {
+        getmouseclick(WM_LBUTTONDOWN,x,y);
+        if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
+        {
+            paginaMatrice();
+        }
+    }
+
+}
 
 ///OPERATII VECTORI
+
+
 
 void afisareV(int vec[50], int x1, int y1, int ii)
 {
@@ -405,7 +600,8 @@ void afisareV(int vec[50], int x1, int y1, int ii)
 
 void paginaAdunareElV()
 {
-    int i; sum = 1;
+    int i;
+    sum = 0;
     char str[50] = "";
     char nr[50] = "";
     cleardevice();
@@ -437,7 +633,7 @@ void paginaAdunareElV()
     sprintf(str, "%d", sum);
     outtextxy(430+i*50,350,"=");
     outtextxy(467+i*50,350,str);
-     while (ok == false)
+    while (ok == false)
     {
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
@@ -449,7 +645,8 @@ void paginaAdunareElV()
 
 void inmultireElV()
 {
-    int i; produs=1;
+    int i;
+    produs=1;
     char str[50] = "";
     char nr[50] = "";
     cleardevice();
