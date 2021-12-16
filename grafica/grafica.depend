@@ -5,11 +5,13 @@
 	<winbgim.h>
 	<math.h>
 
-1639403963 source:c:\users\matei\documents\github\bibmat\grafica\main.cpp
+1639596543 source:c:\users\matei\documents\github\bibmat\grafica\main.cpp
 	<iostream>
 	<graphics.h>
 	<winbgim.h>
 	<math.h>
 	<cstring>
 	<fstream>
+
+1639594535 source:c:\users\matei\documents\github\bibmat\grafica\icon.rc
 

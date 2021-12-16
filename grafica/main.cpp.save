@@ -43,10 +43,14 @@ void init();
 
 void citireFisierMatrice();
 void citireEcranMatrice();
-void afisareMatrice();
+void afisareMatrice(int mat[4][4], int x1, int y1, int ii, int jj);
+void afisareMatrice(int mat[4][4], int x1, int y1, int i1, int j1, int i2, int j2, int i3, int j3);
+void afisareOperatiiMatrice(int i, int j, int k, int m1[4][4], int m2[4][4]);
 void paginaAdunareMat();
 void paginaScadereMat();
 void paginaInmultireMat();
+void paginaPutereMat();
+void paginaDeterminantMat();
 
 void afisareV();
 void paginaAdunareElV();
@@ -58,6 +62,7 @@ int x,y;
 /// variabile Matrice
 int mat1[4][4], mat2[4][4], mat3[4][4];
 bool citireFisier = false;
+bool douaMatrice = false;
 
 /// variabile Vectori
 int n;
@@ -91,6 +96,10 @@ int main()
 {
     //citireVector(vec);
     //afisareVector(vec);
+
+    /// FreeConsole();
+    ///     ^^^ comanda pentru a face sa se inchida consola cand deschizi direct .exe-ul aplicatiei
+
     init();
     pagina1();
 
@@ -187,6 +196,7 @@ void pagina1()
     showButton(butonMatrice);
     showButton(butonVectori);
 
+
     int ok=false;
     int x,y;
     while(ok==false)
@@ -247,7 +257,7 @@ void paginaVectori()
         {
             ok=true;
         }
-        
+
     }
 }
 
@@ -260,8 +270,11 @@ void paginaMatrice()
     showButton(adunareM);
     showButton(scadereM);
     showButton(inmultireM);
+    showButton(putereM);
     showButton(inapoi);
     showButton(butonFisier, 255, 0, 0);
+    showButton(detM);
+    citireFisier = false;
     int ok=false;
     int x,y;
     while (ok == false)
@@ -290,10 +303,12 @@ void paginaMatrice()
         }
         if(isInside(x, y, putereM.x1-1.5, putereM.y1-12, putereM.x2, putereM.y2-12)==true)
         {
+            paginaPutereMat();
             ok=true;
         }
         if(isInside(x, y, detM.x1-1.5, detM.y1-12, detM.x2, detM.y2-12)==true)
         {
+            paginaDeterminantMat();
             ok=true;
         }
         if(isInside(x, y, transM.x1-1.5, transM.y1-12, transM.x2, transM.y2-12)==true)
@@ -324,63 +339,106 @@ void paginaMatrice()
 
 void citireFisierMatrice()
 {
-    for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++)
-            fin>>mat1[i][j];
-    for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++)
-            fin>>mat2[i][j];
+
+    if(douaMatrice)
+    {
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+                fin>>mat1[i][j];
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+                fin>>mat2[i][j];
+    }
+    else
+    {
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+                fin>>mat1[i][j];
+    }
+
 }
 
-void citireEcranMatrice()
+void citireEcranMatrice() /// trebuie facut sa poata citi numere cu mai multe cifre
 {
     char c, cuv[] = "";
     int k = 0;
     int yEcran = 300;
     setbkcolor(COLOR(255, 255, 255));
-    for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++)
-        {
-            outtextxy(50*(k++) + 300, yEcran, "      ");
-        }
-    k = 0;
-    outtextxy(50 + 300, yEcran - 50, "Prima matrice:");
-    for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++)
-        {
-            c = (char)getch();
-            mat1[i][j] = (int)(c - '0');
-            cuv[0] = c;
-            cuv[1] = NULL;
-            outtextxy(50*(k++) + 300, yEcran, cuv);
-        }
-    k = 0;
-    outtextxy(50 + 300, yEcran - 50, "A doua matrice:");
+    if(douaMatrice)
+    {
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+            {
+                outtextxy(50*(k++) + 300, yEcran, "      ");
+            }
+        k = 0;
+        outtextxy(50 + 300, yEcran - 50, "Prima matrice:");
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+            {
+                c = (char)getch();
+                mat1[i][j] = (int)(c - '0');
+                cuv[0] = c;
+                cuv[1] = NULL;
+                outtextxy(50*(k++) + 300, yEcran, cuv);
+            }
+        k = 0;
+        outtextxy(50 + 300, yEcran - 50, "A doua matrice:");
 
-    k = 0;
-    for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++)
-        {
-            outtextxy(50*(k++) + 300, yEcran, "      ");
-        }
-    k = 0;
-    for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++)
-        {
-            c = (char)getch();
-            mat2[i][j] = (int)(c - '0');
-            cuv[0] = c;
-            cuv[1] = NULL;
-            outtextxy(50*(k++) + 300, yEcran, cuv);
-        }
+        k = 0;
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+            {
+                outtextxy(50*(k++) + 300, yEcran, "      ");
+            }
+        k = 0;
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+            {
+                c = (char)getch();
+                mat2[i][j] = (int)(c - '0');
+                cuv[0] = c;
+                cuv[1] = NULL;
+                outtextxy(50*(k++) + 300, yEcran, cuv);
+            }
 
-    outtextxy(50 + 300, yEcran - 50, "                                ");
-    k = 0;
-    for(int i = 0; i < 3; i++)
-        for(int j = 0; j < 3; j++)
-        {
-            outtextxy(50*(k++) + 300, yEcran, "      ");
-        }
+        outtextxy(50 + 300, yEcran - 50, "                                ");
+        k = 0;
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+            {
+                outtextxy(50*(k++) + 300, yEcran, "      ");
+            }
+    }
+    else
+    {
+        k = 0;
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+            {
+                outtextxy(50*(k++) + 300, yEcran, "      ");
+            }
+        k = 0;
+        outtextxy(50 + 300, yEcran - 50, "Matricea:");
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+            {
+                c = (char)getch();
+                mat1[i][j] = (int)(c - '0');
+                cuv[0] = c;
+                cuv[1] = NULL;
+                outtextxy(50*(k++) + 300, yEcran, cuv);
+            }
+        outtextxy(50 + 300, yEcran - 50, "                                ");
+        k = 0;
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+            {
+                outtextxy(50*(k++) + 300, yEcran, "      ");
+            }
+    }
+
+
 }
 
 void resetMat(int m[4][4])
@@ -416,6 +474,31 @@ void afisareMatrice(int mat[4][4], int x1, int y1, int ii, int jj)
         }
 }
 
+void afisareMatrice(int mat[4][4], int x1, int y1, int i1, int j1, int i2, int j2, int i3, int j3)
+{
+    char str[50] = "";
+    for(int i = 0; i < 3; i++)
+        for(int j = 0; j < 3; j++)
+        {
+            if(i == i1 && j == j1 || i == i2 && j == j2 || i == i3 && j == j3)
+            {
+                settextjustify(CENTER_TEXT, CENTER_TEXT);
+                setcolor(WHITE);
+                setbkcolor(COLOR(244, 158, 76));
+                sprintf(str, "%d", mat[i][j]);
+                outtextxy(j*80 + x1*150, i*80 + y1*150, str);
+            }
+            else
+            {
+                settextjustify(CENTER_TEXT, CENTER_TEXT);
+                setcolor(BLACK);
+                setbkcolor(COLOR(255, 255, 255));
+                sprintf(str, "%d", mat[i][j]);
+                outtextxy(j*80 + x1*150, i*80 + y1*150, str);
+            }
+        }
+}
+
 void paginaAdunareMat()
 {
     cleardevice();
@@ -423,6 +506,7 @@ void paginaAdunareMat()
     cleardevice();
     showButton(inapoi);
     showMainText("Adunare");
+    douaMatrice = true;
 
 
     if(citireFisier)
@@ -464,7 +548,7 @@ void paginaAdunareMat()
             paginaMatrice();
         }
     }
-    clearviewport();
+
 }
 
 void paginaScadereMat()
@@ -474,6 +558,7 @@ void paginaScadereMat()
     cleardevice();
     showButton(inapoi);
     showMainText("Scadere");
+    douaMatrice = true;
 
     if(citireFisier)
         citireFisierMatrice();
@@ -519,6 +604,7 @@ void paginaInmultireMat()
     cleardevice();
     showButton(inapoi);
     showMainText("Inmultire");
+    douaMatrice = true;
 
     if(citireFisier)
         citireFisierMatrice();
@@ -538,14 +624,19 @@ void paginaInmultireMat()
         for (int j = 0; j < 3; j++)
         {
             mat3[i][j] = 0;
+
             for (int k = 0; k < 3; k++)
-                mat3[i][j] += mat1[i][k] * mat2[k][j];
+                {
+                    afisareOperatiiMatrice(i, j, k, mat1, mat2);
+                    mat3[i][j] += mat1[i][k] * mat2[k][j];
 
-            afisareMatrice(mat3, 6, 3, i, j);
-            afisareMatrice(mat1, 1, 3, i, j);
-            afisareMatrice(mat2, 3, 3, i, j);
+                    afisareMatrice(mat3, 6, 3, i, j);
+                    afisareMatrice(mat1, 1, 3, i, k); /// verifica animatia
+                    afisareMatrice(mat2, 3, 3, k, j);
+                    delay(300);
+                }
 
-            delay(300);
+            ///delay(500);
         }
     }
 
@@ -562,12 +653,154 @@ void paginaInmultireMat()
 
 }
 
+void paginaPutereMat()
+{
+    cleardevice();
+    setbkcolor(WHITE);
+    cleardevice();
+    showButton(inapoi);
+    showMainText("Ridicare la putere");
+    douaMatrice = false;
+
+    if(citireFisier)
+        citireFisierMatrice();
+    else
+        citireEcranMatrice();
+
+    resetMat(mat3);
+
+    outtextxy(140, 650, "Matricea 1");
+    outtextxy(420, 650, "Matricea 1");
+    outtextxy(870, 650, "Rezultat");
+    outtextxy(360, 500, "*");
+    outtextxy(750, 500, "=");
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            mat3[i][j] = 0;
+            for (int k = 0; k < 3; k++)
+                {
+
+                    //cout<<mat3[i][j]<<" + ("<<mat1[i][k]<<" * "<<mat1[k][j]<<")"<<endl;
+                    afisareOperatiiMatrice(i, j, k, mat1, mat1);
+                    mat3[i][j] += mat1[i][k] * mat1[k][j];
+
+                    afisareMatrice(mat3, 6, 3, i, j);
+                    afisareMatrice(mat1, 1, 3, i, k);
+                    afisareMatrice(mat1, 3, 3, k, j);
+                    delay(300);
+                }
+            //cout<<endl;
+        }
+
+
+    }
+
+
+    while (ok == false)
+    {
+        getmouseclick(WM_LBUTTONDOWN,x,y);
+        if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
+        {
+            paginaMatrice();
+        }
+    }
+}
+
+void paginaDeterminantMat() /// nu afiseaza corect determinantul inca
+{
+    cleardevice();
+    setbkcolor(WHITE);
+    cleardevice();
+    showButton(inapoi);
+    showMainText("Determinantul unei matrice");
+    douaMatrice = false;
+
+    if(citireFisier)
+        citireFisierMatrice();
+    else
+        citireEcranMatrice();
+
+    int det = 0;
+    det = (mat1[0][0] * mat1[1][1] * mat1[2][2]) + (mat1[0][2] * mat1[2][1] * mat1[1][0]) + (mat1[0][1] * mat1[1][2] * mat1[2][0]) - (mat1[0][2] * mat1[1][1] * mat1[2][0]) - (mat1[0][1] * mat1[1][0] * mat1[2][2]) - (mat1[1][2] * mat1[2][1] * mat1[0][0]);
+    char *determinant;
+    sprintf(determinant, "%d", det);
+    outtextxy(300, 300, determinant);
+    cout<<det;
+
+    int d = 500;
+    afisareMatrice(mat1, 1, 3, 0, 0, 1, 1, 2, 2);
+    delay(d);
+    afisareMatrice(mat1, 1, 3, 0, 2, 2, 1, 1, 0);
+    delay(d);
+    afisareMatrice(mat1, 1, 3, 0, 1, 1, 2, 2, 0);
+    delay(d);
+
+    afisareMatrice(mat1, 1, 3, 0, 2, 1, 1, 2, 0);
+    delay(d);
+    afisareMatrice(mat1, 1, 3, 0, 1, 1, 0, 2, 2);
+    delay(d);
+    afisareMatrice(mat1, 1, 3, 1, 2, 2, 1, 0, 0);
+
+
+    while (ok == false)
+    {
+        getmouseclick(WM_LBUTTONDOWN,x,y);
+        if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
+        {
+            paginaMatrice();
+        }
+    }
+
+}
+
+void afisareOperatiiMatrice(int i, int j, int k, int m1[4][4], int m2[4][4])
+{
+    setcolor(BLACK);
+    setbkcolor(COLOR(255, 255, 255));
+
+    char s1[9], s2[9], s3[9];   /// mat1 = mat2 pt ridicare la putere
+    sprintf(s1, "%d", m1[i][k]);
+    sprintf(s2, "%d", m2[k][j]);
+    sprintf(s3, "%d", mat3[i][j]);
+
+
+    bar(200, 750, 850, 900);
+
+       // clearviewport();
+
+        outtextxy(250, 800, s3);
+        outtextxy(350, 800, " + (");
+        outtextxy(450, 800, s1);
+        outtextxy(550, 800, " * ");
+        outtextxy(650, 800, s2);
+        outtextxy(750, 800, ")");
+
+    //else
+      //  outtextxy(250, 800, "                                                                               ");
+
+
+
+
+    cout<<mat3[i][j]<<" + ("<<mat1[i][k]<<" * "<<mat1[k][j]<<")"<<endl;
+
+    setcolor(WHITE);
+    setbkcolor(COLOR(244, 158, 76));
+
+
+}
+
+
 ///OPERATII VECTORI
 
 
 
 void afisareV(int vec[50], int x1, int y1, int ii)
 {
+
+
     int i;
     char str[50] = "";
     for(i = 0; i < n; i++)
