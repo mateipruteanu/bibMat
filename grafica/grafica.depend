@@ -15,3 +15,11 @@
 
 1639594535 source:c:\users\matei\documents\github\bibmat\grafica\icon.rc
 
+1641812904 source:c:\users\mateipruteanu\documents\github\bibmat\grafica\main.cpp
+	<iostream>
+	<graphics.h>
+	<winbgim.h>
+	<math.h>
+	<cstring>
+	<fstream>
+
