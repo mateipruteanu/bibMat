@@ -3,6 +3,8 @@
 
 Instructiunile de folosire a variantei de consola a bibliotecii pot fi gasite pe pagina [Wiki](https://github.com/mateipruteanu/bibMat/wiki) a proiectului.
 
+### [Apasa aici](https://github.com/mateipruteanu/bibMat/files/7857174/bibMat.zip) pentru a descarca un fisier .zip ce contine doar cu programul si fisierele auxiliare (fara cod). 
+
 Operatii suportate:
 
 - Cu matrice:
@@ -21,7 +23,4 @@ Operatii suportate:
   - sortare crescatoare/descrescatoare a unui vector
   - inmultire vector cu un scalar
 
-Un proiect realizat de Gheorghiu Maria si Pruteanu Matei
-
-Descarcati un fisier .zip ce contine doar cu programul si fisierele auxiliare (fara cod): 
-[bibMat.zip](https://github.com/mateipruteanu/bibMat/files/7857174/bibMat.zip)
+Un proiect realizat de [Gheorghiu Maria](https://github.com/PikaMaria27) si [Pruteanu Matei](https://github.com/mateipruteanu/).
