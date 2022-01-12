@@ -1,7 +1,7 @@
 # bibMat
  O biblioteca C / C++ pentru operatii cu matrice si vectori
 
-Instructiunile de folosire a bibliotecii pot fi gasite pe pagina [Wiki](https://github.com/mateipruteanu/bibMat/wiki) a proiectului.
+Instructiunile de folosire a variantei de consola a bibliotecii pot fi gasite pe pagina [Wiki](https://github.com/mateipruteanu/bibMat/wiki) a proiectului.
 
 Operatii suportate:
 
@@ -20,11 +20,5 @@ Operatii suportate:
   - shiftare stanga/dreapta a unui vector
   - sortare crescatoare/descrescatoare a unui vector
   - inmultire vector cu un scalar
-
-Operatii ce vor fi implementate in viitor:
- - scrierea intr-un fisier a rezultatului
- - obtinerea inversei unei matrice
- - etc...
-
 
 Un proiect realizat de Gheorghiu Maria si Pruteanu Matei
