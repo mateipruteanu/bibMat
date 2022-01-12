@@ -11,6 +11,7 @@
 using namespace std;
 
 ifstream fin("matrice.txt");
+ifstream finV("vectori.txt");
 
 char title[] = "bibMat - O biblioteca pentru efectuarea operatiilor cu matrice si vectori";
 
@@ -210,25 +211,25 @@ void pagina1()
         if(isInside(x, y, butonMatrice.x1-1.5, butonMatrice.y1-12, butonMatrice.x2, butonMatrice.y2-12)==true) /// daca am apasat pe butonul de matrice
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaMatrice();
         }
         if(isInside(x, y, butonVectori.x1-1.5, butonVectori.y1-12, butonVectori.x2, butonVectori.y2-12)==true) /// daca am apasat pe butonul de vectori
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaVectori();
         }
         if(isInside(x, y, setari.x1-1.5, setari.y1-12, setari.x2, setari.y2-12)==true)
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaSetari();
         }
         if(isInside(x, y, despreProiect.x1-1.5, despreProiect.y1-12, despreProiect.x2, despreProiect.y2-12)==true)
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaDespre();
         }
     }
@@ -259,7 +260,7 @@ void paginaSetari()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             pagina1();
         }
         if(isInside(x, y, butonSunet.x1-1.5, butonSunet.y1-12, butonSunet.x2, butonSunet.y2-12)==true)
@@ -278,42 +279,42 @@ void paginaSetari()
         }
         if(isInside(x, y, bkAlb.x1-1.5, bkAlb.y1-12, bkAlb.x2, bkAlb.y2-12)==true)
         {
-            if (sound == true) PlaySound(TEXT("E:\\sounds\\sfx-shooop.WAV"), NULL, SND_ASYNC);
+            if (sound == true) PlaySound(TEXT("sfx-shooop.WAV"), NULL, SND_ASYNC);
             culoare = 15;
             setbkcolor(culoare);
             paginaSetari();
         }
         if(isInside(x, y, bkAlbastru.x1-1.5, bkAlbastru.y1-12, bkAlbastru.x2, bkAlbastru.y2-12)==true)
         {
-            if (sound == true) PlaySound(TEXT("E:\\sounds\\sfx-shooop.WAV"), NULL, SND_ASYNC);
+            if (sound == true) PlaySound(TEXT("sfx-shooop.WAV"), NULL, SND_ASYNC);
             culoare = 9;
             setbkcolor(culoare);
             paginaSetari();
         }
         if(isInside(x, y, bkVerde.x1-1.5, bkVerde.y1-12, bkVerde.x2, bkVerde.y2-12)==true)
         {
-            if (sound == true) PlaySound(TEXT("E:\\sounds\\sfx-shooop.WAV"), NULL, SND_ASYNC);
+            if (sound == true) PlaySound(TEXT("sfx-shooop.WAV"), NULL, SND_ASYNC);
             culoare = 10;
             setbkcolor(culoare);
             paginaSetari();
         }
         if(isInside(x, y, bkRosu.x1-1.5, bkRosu.y1-12, bkRosu.x2, bkRosu.y2-12)==true)
         {
-            if (sound == true) PlaySound(TEXT("E:\\sounds\\sfx-shooop.WAV"), NULL, SND_ASYNC);
+            if (sound == true) PlaySound(TEXT("sfx-shooop.WAV"), NULL, SND_ASYNC);
             culoare = 12;
             setbkcolor(culoare);
             paginaSetari();
         }
         if(isInside(x, y, bkRoz.x1-1.5, bkRoz.y1-12, bkRoz.x2, bkRoz.y2-12)==true)
         {
-            if (sound == true) PlaySound(TEXT("E:\\sounds\\sfx-shooop.WAV"), NULL, SND_ASYNC);
+            if (sound == true) PlaySound(TEXT("sfx-shooop.WAV"), NULL, SND_ASYNC);
             culoare = 13;
             setbkcolor(culoare);
             paginaSetari();
         }
         if(isInside(x, y, bkGri.x1-1.5, bkGri.y1-12, bkGri.x2, bkGri.y2-12)==true)
         {
-            if (sound == true) PlaySound(TEXT("E:\\sounds\\sfx-shooop.WAV"), NULL, SND_ASYNC);
+            if (sound == true) PlaySound(TEXT("sfx-shooop.WAV"), NULL, SND_ASYNC);
             culoare = 7;
             setbkcolor(culoare);
             paginaSetari();
@@ -342,7 +343,7 @@ void paginaDespre()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             pagina1();
         }
     }
@@ -370,49 +371,49 @@ void paginaVectori()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             pagina1();
         }
         if(isInside(x, y, sumaV.x1-1.5, sumaV.y1-12, sumaV.x2, sumaV.y2-12)==true)
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaAdunareElV();
         }
         if(isInside(x, y, produsV.x1-1.5, produsV.y1-12, produsV.x2, produsV.y2-12)==true)
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             inmultireElV();
         }
         if(isInside(x, y, inmultireSV.x1-1.5, inmultireSV.y1-12, inmultireSV.x2, inmultireSV.y2-12)==true)
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             inmultireScalarV();
         }
         if(isInside(x, y, shiftStgV.x1-1.5, shiftStgV.y1-12, shiftStgV.x2, shiftStgV.y2-12)==true)
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             shiftareStgV();
         }
         if(isInside(x, y, shiftDrV.x1-1.5, shiftDrV.y1-12, shiftDrV.x2, shiftDrV.y2-12)==true)
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             shiftareDrV();
         }
         if(isInside(x, y, sortCrescV.x1-1.5, sortCrescV.y1-12, sortCrescV.x2, sortCrescV.y2-12)==true)
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             ordonareCresc();
         }
         if(isInside(x, y, sortDescrescV.x1-1.5, sortDescrescV.y1-12, sortDescrescV.x2, sortDescrescV.y2-12)==true)
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-bleep.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             ordonareDescresc();
         }
         if(isInside(x, y, butonFisier.x1-1.5, butonFisier.y1-12, butonFisier.x2, butonFisier.y2-12)==true)
@@ -435,7 +436,7 @@ void paginaVectori()
 void paginaMatrice()
 {
     cleardevice();
-    setbkcolor(WHITE);
+    setbkcolor(culoare);
     cleardevice();
     showMainText("Operatii cu matrice");
     showButton(adunareM);
@@ -454,42 +455,58 @@ void paginaMatrice()
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             pagina1();
         }
         if(isInside(x, y, adunareM.x1-1.5, adunareM.y1-12, adunareM.x2, adunareM.y2-12)==true) /// daca am apasat pe butonul de adunare
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaAdunareMat();
             clearviewport();
             ok=true;
         }
         if(isInside(x, y, scadereM.x1-1.5, scadereM.y1-12, scadereM.x2, scadereM.y2-12)==true) /// daca am apasat pe butonul de scadere
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaScadereMat();
             clearviewport();
             ok=true;
         }
         if(isInside(x, y, inmultireM.x1-1.5, inmultireM.y1-12, inmultireM.x2, inmultireM.y2-12)==true) /// daca am apasat pe butonul de inmultire
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaInmultireMat();
             ok=true;
         }
         if(isInside(x, y, putereM.x1-1.5, putereM.y1-12, putereM.x2, putereM.y2-12)==true)
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaPutereMat();
             ok=true;
         }
         if(isInside(x, y, detM.x1-1.5, detM.y1-12, detM.x2, detM.y2-12)==true)
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaDeterminantMat();
             ok=true;
         }
         if(isInside(x, y, transM.x1-1.5, transM.y1-12, transM.x2, transM.y2-12)==true)
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-bleep.WAV"), NULL, SND_ASYNC);}
             paginaTranspusaMat();
             ok=true;
         }
         if(isInside(x, y, butonFisier.x1-1.5, butonFisier.y1-12, butonFisier.x2, butonFisier.y2-12)==true)
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             if(citireFisier == false)
             {
                 citireFisier = true;
@@ -543,7 +560,7 @@ void citireMatrice(int m[4][4], char cuv[101]) /// functie helper pt citireEcran
 
 void citireFisierMatrice()
 {
-    setbkcolor(COLOR(255, 255, 255));
+    setbkcolor(culoare);
     if(douaMatrice)
     {
         for(int i = 0; i < 3; i++)
@@ -567,8 +584,8 @@ void citireEcranMatrice() /// se pot citi nr cu mai multe cifre
     char c, cuv[101] = "";
     int k = 0;
     int yEcran = 300;
-    setbkcolor(COLOR(255, 255, 255));
-    setfillstyle(SOLID_FILL, WHITE);
+    setbkcolor(culoare);
+    setfillstyle(SOLID_FILL, culoare);
     if(douaMatrice)
     {
 
@@ -625,7 +642,7 @@ void resetMat(int m[4][4])
             mat3[i][j] = 0;
 }
 
-void afisareMatriceT(int mat[4][4], int x1, int y1, int ii, int jj)
+void afisareMatriceT(int mat[4][4], int x1, int y1, int ii, int jj) /// delete
 {
 
 /// de aici incepe originalul
@@ -672,7 +689,7 @@ void afisareMatrice(int mat[4][4], int x1, int y1, int ii, int jj)
             {
                 settextjustify(CENTER_TEXT, CENTER_TEXT);
                 setcolor(BLACK);
-                setbkcolor(COLOR(255, 255, 255));
+                setbkcolor(culoare);
                 sprintf(str, "%d", mat[i][j]);
                 outtextxy(j*110 + x1*150, i*80 + y1*150, str);
             }
@@ -697,7 +714,7 @@ void afisareMatrice(int mat[4][4], int x1, int y1, int i1, int j1, int i2, int j
             {
                 settextjustify(CENTER_TEXT, CENTER_TEXT);
                 setcolor(BLACK);
-                setbkcolor(COLOR(255, 255, 255));
+                setbkcolor(culoare);
                 sprintf(str, "%d", mat[i][j]);
                 outtextxy(j*80 + x1*150, i*80 + y1*150, str);
             }
@@ -707,7 +724,7 @@ void afisareMatrice(int mat[4][4], int x1, int y1, int i1, int j1, int i2, int j
 void paginaAdunareMat()
 {
     cleardevice();
-    setbkcolor(WHITE);
+    setbkcolor(culoare);
     cleardevice();
     showButton(inapoi);
     showMainText("Adunare");
@@ -751,6 +768,8 @@ void paginaAdunareMat()
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             clearviewport();
             paginaMatrice();
         }
@@ -761,7 +780,7 @@ void paginaAdunareMat()
 void paginaScadereMat()
 {
     cleardevice();
-    setbkcolor(WHITE);
+    setbkcolor(culoare);
     cleardevice();
     showButton(inapoi);
     showMainText("Scadere");
@@ -801,6 +820,8 @@ void paginaScadereMat()
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaMatrice();
         }
     }
@@ -809,7 +830,7 @@ void paginaScadereMat()
 void paginaInmultireMat()
 {
     cleardevice();
-    setbkcolor(WHITE);
+    setbkcolor(culoare);
     cleardevice();
     showButton(inapoi);
     showMainText("Inmultire");
@@ -855,6 +876,8 @@ void paginaInmultireMat()
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaMatrice();
         }
     }
@@ -864,7 +887,7 @@ void paginaInmultireMat()
 void paginaPutereMat()
 {
     cleardevice();
-    setbkcolor(WHITE);
+    setbkcolor(culoare);
     cleardevice();
     showButton(inapoi);
     showMainText("Ridicare la putere");
@@ -912,6 +935,8 @@ void paginaPutereMat()
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaMatrice();
         }
     }
@@ -920,7 +945,7 @@ void paginaPutereMat()
 void paginaDeterminantMat()
 {
     cleardevice();
-    setbkcolor(WHITE);
+    setbkcolor(culoare);
     cleardevice();
     showButton(inapoi);
     showMainText("Determinantul unei matrice");
@@ -968,6 +993,8 @@ void paginaDeterminantMat()
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaMatrice();
         }
     }
@@ -978,7 +1005,7 @@ void paginaDeterminantMat()
 void paginaTranspusaMat()
 {
     cleardevice();
-    setbkcolor(WHITE);
+    setbkcolor(culoare);
     cleardevice();
     showButton(inapoi);
     showMainText("Transpusa");
@@ -1018,6 +1045,8 @@ void paginaTranspusaMat()
         getmouseclick(WM_LBUTTONDOWN,x,y);
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
+            if (sound == true){
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             clearviewport();
             paginaMatrice();
         }
@@ -1028,7 +1057,7 @@ void paginaTranspusaMat()
 void afisareInmultireMatrice(int i, int j, int k, int m1[4][4], int m2[4][4])
 {
     setcolor(BLACK);
-    setbkcolor(COLOR(255, 255, 255));
+    setbkcolor(culoare);
 
     char s1[9], s2[9], s3[9];   /// mat1 = mat2 pt ridicare la putere
     sprintf(s1, "%d", m1[i][k]);
@@ -1056,14 +1085,14 @@ void afisareInmultireMatrice(int i, int j, int k, int m1[4][4], int m2[4][4])
 void afisareOperatiiMatrice(int i, int j, int m1[4][4], int m2[4][4], char operatie[4])
 {
     setcolor(BLACK);
-    setbkcolor(COLOR(255, 255, 255));
+    setbkcolor(culoare);
 
     char s1[9], s2[9], s3[9];   /// mat1 = mat2 pt ridicare la putere
     sprintf(s1, "%d", m1[i][j]);
     sprintf(s2, "%d", m2[i][j]);
     sprintf(s3, "%d", mat3[i][j]);
 
-
+    setfillstyle(SOLID_FILL, culoare);
     bar(200, 250, 850, 400);
 
         outtextxy(250, 300, s1);
@@ -1074,16 +1103,17 @@ void afisareOperatiiMatrice(int i, int j, int m1[4][4], int m2[4][4], char opera
 
     //cout<<mat3[i][j]<<" + ("<<mat1[i][k]<<" * "<<mat1[k][j]<<")"<<endl;
 
-    setcolor(WHITE);
-    setbkcolor(COLOR(244, 158, 76));
+    //setcolor(WHITE);
+    //setbkcolor(COLOR(244, 158, 76));
 }
 
 ///OPERATII VECTORI
 
 void citireFisierVector()
 {
+    finV>>n;
     for(int i = 0; i < n; i++)
-        fin>>vec[i];
+        finV>>vec[i];
 }
 
 void citireNrElemente(char cuv[101], int &n)
@@ -1159,6 +1189,7 @@ void citireEcranVector() /// se pot citi nr cu mai multe cifre
 
 
     delay(600);
+    setfillstyle(SOLID_FILL, culoare);
     bar(10, 180, 2000, 250); /// dupa o secunda acopera nr de cifre si afiseaza partea de citire a vectorului
 
 
@@ -1322,7 +1353,7 @@ void paginaAdunareElV()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaVectori();
         }
     }
@@ -1484,7 +1515,7 @@ void inmultireScalarV()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaVectori();
         }
     }
@@ -1524,7 +1555,7 @@ void shiftareStgV()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaVectori();
         }
     }
@@ -1565,7 +1596,7 @@ void shiftareDrV()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaVectori();
         }
     }
@@ -1610,7 +1641,7 @@ void ordonareCresc()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaVectori();
         }
     }
@@ -1656,7 +1687,7 @@ void ordonareDescresc()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaVectori();
         }
     }
