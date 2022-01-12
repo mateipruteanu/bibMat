@@ -22,3 +22,6 @@ Operatii suportate:
   - inmultire vector cu un scalar
 
 Un proiect realizat de Gheorghiu Maria si Pruteanu Matei
+
+Descarcati un fisier .zip ce contine doar cu programul si fisierele auxiliare (fara cod): 
+[bibMat.zip](https://github.com/mateipruteanu/bibMat/files/7857174/bibMat.zip)
