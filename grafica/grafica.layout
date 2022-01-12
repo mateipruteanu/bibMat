@@ -2,9 +2,19 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="matrice.txt" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="39" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="vectori.txt" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="33954" topLine="184" />
+			<Cursor1 position="8094" topLine="127" />
 		</Cursor>
 		<Folding>
 			<Collapse line="20" />
@@ -27,11 +37,8 @@
 			<Collapse line="224" />
 			<Collapse line="229" />
 			<Collapse line="230" />
-			<Collapse line="238" />
-			<Collapse line="257" />
 			<Collapse line="260" />
 			<Collapse line="261" />
-			<Collapse line="266" />
 			<Collapse line="274" />
 			<Collapse line="280" />
 			<Collapse line="287" />
@@ -140,7 +147,6 @@
 			<Collapse line="1350" />
 			<Collapse line="1353" />
 			<Collapse line="1354" />
-			<Collapse line="1362" />
 			<Collapse line="1379" />
 			<Collapse line="1386" />
 			<Collapse line="1388" />
@@ -156,9 +162,6 @@
 			<Collapse line="1439" />
 			<Collapse line="1444" />
 			<Collapse line="1449" />
-			<Collapse line="1454" />
-			<Collapse line="1457" />
-			<Collapse line="1458" />
 			<Collapse line="1466" />
 			<Collapse line="1472" />
 			<Collapse line="1483" />
@@ -197,15 +200,5 @@
 			<Collapse line="1687" />
 			<Collapse line="1688" />
 		</Folding>
-	</File>
-	<File name="vectori.txt" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="12" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="matrice.txt" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="39" topLine="0" />
-		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

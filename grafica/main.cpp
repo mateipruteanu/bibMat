@@ -268,7 +268,7 @@ void paginaSetari()
             if(sound == false)
             {
                 sound = true;
-                PlaySound(TEXT("E:\\sounds\\sfx-shooop.WAV"), NULL, SND_ASYNC);
+                PlaySound(TEXT("sfx-shooop.WAV"), NULL, SND_ASYNC);
                 showButton(butonSunet, 0, 255, 0);
             }
             else
@@ -1457,7 +1457,7 @@ void inmultireElV()
         if(isInside(x, y, inapoi.x1-1.5, inapoi.y1-12, inapoi.x2, inapoi.y2-12)==true) /// daca am apasat pe butonul inapoi
         {
             if (sound == true){
-            PlaySound(TEXT("E:\\sounds\\sfx-pichoop.WAV"), NULL, SND_ASYNC);}
+            PlaySound(TEXT("sfx-pichoop.WAV"), NULL, SND_ASYNC);}
             paginaVectori();
         }
     }
