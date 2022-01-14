@@ -38,6 +38,7 @@ void showMainText(char text[]);
 void showSecondaryText(char text[]);
 
 void resetMat(int m[4][4]);
+
 void pagina1();
 void paginaMatrice();
 void paginaVectori();
@@ -47,12 +48,10 @@ void paginaDespre();
 
 void citireFisierMatrice();
 void citireEcranMatrice();
-
 void afisareMatrice(int mat[4][4], int x1, int y1, int ii, int jj);
 void afisareMatrice(int mat[4][4], int x1, int y1, int i1, int j1, int i2, int j2, int i3, int j3);
 void afisareInmultireMatrice(int i, int j, int k, int m1[4][4], int m2[4][4]);
 void afisareOperatiiMatrice(int i, int j, int m1[4][4], int m2[4][4], char operatie[4]);
-
 void paginaAdunareMat();
 void paginaScadereMat();
 void paginaInmultireMat();
@@ -203,8 +202,6 @@ void pagina1()
     showButton(setari);
     showButton(despreProiect);
 
-    int ok=false;
-    int x,y;
     while(ok==false)
     {
         getmouseclick(WM_LBUTTONDOWN,x,y);
@@ -602,6 +599,7 @@ void citireEcranMatrice() /// se pot citi nr cu mai multe cifre
 
         outtextxy(50 + 300, yEcran - 50, "                                ");
         outtextxy(50 + 300, yEcran - 50, "A doua matrice:");
+        setfillstyle(SOLID_FILL, culoare);
         bar(300, yEcran - 10, 50 + 300 + 1000, yEcran + 30);
 
         k = 0;
@@ -613,7 +611,7 @@ void citireEcranMatrice() /// se pot citi nr cu mai multe cifre
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
                 outtextxy(50*(k++) + 300, yEcran, "      ");
-
+        setfillstyle(SOLID_FILL, culoare);
         bar(300, yEcran - 10, 50 + 300 + 1000, yEcran + 30);
 
     }
@@ -629,6 +627,7 @@ void citireEcranMatrice() /// se pot citi nr cu mai multe cifre
         citireMatrice(mat1, cuv); /// <- functia citeste matricea si afiseaza fiecare numar dupa enter
 
         outtextxy(50 + 300, yEcran - 50, "                                ");
+        setfillstyle(SOLID_FILL, culoare);
         bar(300, yEcran - 10, 50 + 300 + 1000, yEcran + 30);
     }
 
@@ -1129,7 +1128,6 @@ void citireNrElemente(char cuv[101], int &n)
         }
         cuv[nrCifre] = NULL;
 
-
         n = atoi(cuv);
 }
 
@@ -1186,20 +1184,14 @@ void citireEcranVector() /// se pot citi nr cu mai multe cifre
         setcolor(BLACK);
         citireEcranVector();
     }
-
-
-    delay(600);
-    setfillstyle(SOLID_FILL, culoare);
-    bar(10, 180, 2000, 250); /// dupa o secunda acopera nr de cifre si afiseaza partea de citire a vectorului
-
-
-    for(int i = 0; i < n; i++)
+    else
     {
-            outtextxy(50*(k++) + 300, yEcran, "      ");
+        delay(600);
+        bar(10, 180, 2000, 250); /// dupa o secunda acopera nr de cifre si afiseaza partea de citire a vectorului
+        outtextxy(50 + 300, 200, "Vectorul:");
+        citireVector(vec, cuv); /// <- functia citeste vectorul si afiseaza fiecare numar dupa enter
+        bar(10, 340, 2000, 280);
     }
-    outtextxy(50 + 300, 200, "Vectorul:");
-    citireVector(vec, cuv); /// <- functia citeste vectorul si afiseaza fiecare numar dupa enter
-    bar(10, 340, 2000, 280);
 }
 
 void afisareV(int vec[50], int x1, int y1, int ii)
@@ -1483,7 +1475,7 @@ void citireScalar(char cuv[101], int &s)
 void inmultireScalarV()
 {
     int i, s, vec_rez[50]={};
-    char sc, scalar[]="";
+    char scalar[]= "";
     cleardevice();
     setbkcolor(culoare);
     cleardevice();
@@ -1622,8 +1614,8 @@ void ordonareCresc()
     }
 
     for (int i = 0; i < n-1; i++){
-    for (int j = i+1; j < n; j++){
-        if (vec[i] > vec[j]){
+        for (int j = i+1; j < n; j++){
+            if (vec[i] > vec[j]){
                 int auxV = vec[i];
                 vec[i] = vec[j];
                 vec[j] = auxV;
@@ -1667,8 +1659,8 @@ void ordonareDescresc()
     }
 
     for (int i = 0; i < n-1; i++){
-    for (int j = i+1; j < n; j++){
-        if (vec[i] < vec[j]){
+        for (int j = i+1; j < n; j++){
+            if (vec[i] < vec[j]){
                 int aux = vec[j];
                 vec[j] = vec[i];
                 vec[i] = aux;
@@ -1692,3 +1684,4 @@ void ordonareDescresc()
         }
     }
 }
+
