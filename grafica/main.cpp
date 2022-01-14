@@ -599,7 +599,6 @@ void citireEcranMatrice() /// se pot citi nr cu mai multe cifre
 
         outtextxy(50 + 300, yEcran - 50, "                                ");
         outtextxy(50 + 300, yEcran - 50, "A doua matrice:");
-        setfillstyle(SOLID_FILL, culoare);
         bar(300, yEcran - 10, 50 + 300 + 1000, yEcran + 30);
 
         k = 0;
@@ -611,7 +610,6 @@ void citireEcranMatrice() /// se pot citi nr cu mai multe cifre
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
                 outtextxy(50*(k++) + 300, yEcran, "      ");
-        setfillstyle(SOLID_FILL, culoare);
         bar(300, yEcran - 10, 50 + 300 + 1000, yEcran + 30);
 
     }
@@ -627,7 +625,6 @@ void citireEcranMatrice() /// se pot citi nr cu mai multe cifre
         citireMatrice(mat1, cuv); /// <- functia citeste matricea si afiseaza fiecare numar dupa enter
 
         outtextxy(50 + 300, yEcran - 50, "                                ");
-        setfillstyle(SOLID_FILL, culoare);
         bar(300, yEcran - 10, 50 + 300 + 1000, yEcran + 30);
     }
 
@@ -1167,6 +1164,7 @@ void citireEcranVector() /// se pot citi nr cu mai multe cifre
     int k = 0;
     int yEcran = 300;
     setbkcolor(culoare);
+    setfillstyle(SOLID_FILL, culoare);
     k = 0;
 
     outtextxy(300,200,"Cate elemente are vectorul?");
@@ -1684,4 +1682,5 @@ void ordonareDescresc()
         }
     }
 }
+
 
