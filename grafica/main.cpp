@@ -98,7 +98,7 @@ int main()
     pagina1();
 }
 
-void init()
+void init() /// amandoi
 {
     initwindow(latimeEcran, inaltimeEcran, "bibMat");
     initButon(butonMatrice, "Operatii cu Matrice", getmaxx()/2, 3*getmaxy()/9, 7);
@@ -134,7 +134,7 @@ void init()
 
 }
 
-void initButon(buton &b, char text[], int xx, int yy, int m)
+void initButon(buton &b, char text[], int xx, int yy, int m) /// matei
 {
     strcpy(b.msj,text);
     b.x = xx;
@@ -147,7 +147,7 @@ void initButon(buton &b, char text[], int xx, int yy, int m)
     b.y2 = yy + textheight(b.msj)/2;
 }
 
-void showButton(buton b)
+void showButton(buton b) /// matei
 {
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, b.marime);
     settextjustify(CENTER_TEXT, CENTER_TEXT);
@@ -156,7 +156,7 @@ void showButton(buton b)
     outtextxy((b.x1 + b.x2) / 2, (b.y1 + b.y2) / 2, b.msj);
 }
 
-void showButton(buton bb, int r, int g, int b)
+void showButton(buton bb, int r, int g, int b) /// matei
 {
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, bb.marime);
     settextjustify(CENTER_TEXT, CENTER_TEXT);
@@ -165,12 +165,12 @@ void showButton(buton bb, int r, int g, int b)
     outtextxy((bb.x1 + bb.x2) / 2, (bb.y1 + bb.y2) / 2, bb.msj);
 }
 
-bool isInside(int xx, int yy, int x1, int y1, int x2, int y2)
+bool isInside(int xx, int yy, int x1, int y1, int x2, int y2) /// matei
 {
     return x1<=xx && xx<=x2 && y1<=yy && yy<=y2;
 }
 
-void showMainText(char text[])
+void showMainText(char text[]) /// matei
 {
     settextstyle(SANS_SERIF_FONT,HORIZ_DIR, 4.3);
     setcolor(BLACK);
@@ -180,7 +180,7 @@ void showMainText(char text[])
     outtextxy(a,b,&text[0]);
 }
 
-void showSecondaryText(char text[], float h, float w)
+void showSecondaryText(char text[], float h, float w) /// matei
 {
     settextstyle(SANS_SERIF_FONT,HORIZ_DIR, 3.5);
     setbkcolor(culoare);
@@ -191,7 +191,7 @@ void showSecondaryText(char text[], float h, float w)
     outtextxy(a,b,&text[0]);
 }
 
-void pagina1()
+void pagina1() /// amandoi
 {
     cleardevice();
     setbkcolor(culoare);
@@ -232,7 +232,7 @@ void pagina1()
     }
 }
 
-void paginaSetari()
+void paginaSetari() /// maria
 {
     cleardevice();
     setbkcolor(culoare);
@@ -319,7 +319,7 @@ void paginaSetari()
     }
 }
 
-void paginaDespre()
+void paginaDespre() /// maria
 {
     cleardevice();
     setbkcolor(culoare);
@@ -346,7 +346,7 @@ void paginaDespre()
     }
 }
 
-void paginaVectori()
+void paginaVectori() /// maria
 {
     cleardevice();
     setbkcolor(culoare);
@@ -430,7 +430,7 @@ void paginaVectori()
     }
 }
 
-void paginaMatrice()
+void paginaMatrice() /// matei
 {
     cleardevice();
     setbkcolor(culoare);
@@ -520,7 +520,7 @@ void paginaMatrice()
 
 }
 
-///OPERATII MATRICE
+///OPERATII MATRICE (facute de Matei)
 
 void citireMatrice(int m[4][4], char cuv[101]) /// functie helper pt citireEcranMatrice
 {
@@ -555,7 +555,7 @@ void citireMatrice(int m[4][4], char cuv[101]) /// functie helper pt citireEcran
             }
 }
 
-void citireFisierMatrice()
+void citireFisierMatrice() 
 {
     setbkcolor(culoare);
     if(douaMatrice)
@@ -1103,7 +1103,7 @@ void afisareOperatiiMatrice(int i, int j, int m1[4][4], int m2[4][4], char opera
     //setbkcolor(COLOR(244, 158, 76));
 }
 
-///OPERATII VECTORI
+///OPERATII VECTORI (facute de Maria)
 
 void citireFisierVector()
 {
